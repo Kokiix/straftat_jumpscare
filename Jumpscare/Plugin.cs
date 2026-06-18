@@ -26,10 +26,12 @@ public class JumpscarePlugin : BaseUnityPlugin
         Instance = this;
 
         _harmony.PatchAll();
+        SceneManager.sceneLoaded += JumpscareTimer.OnSceneLoad;
     }
 
     void OnDestroy()
     {
         _harmony.UnpatchSelf();
+        SceneManager.sceneLoaded -= JumpscareTimer.OnSceneLoad;
     }
 }
