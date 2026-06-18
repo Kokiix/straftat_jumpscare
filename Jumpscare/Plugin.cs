@@ -25,6 +25,8 @@ public class JumpscarePlugin : BaseUnityPlugin
         this.gameObject.hideFlags = HideFlags.HideAndDontSave;
         Instance = this;
 
+        JumpscareVideoPlayer.Init();
+
         _harmony.PatchAll();
         SceneManager.sceneLoaded += JumpscareTimer.OnSceneLoad;
     }
