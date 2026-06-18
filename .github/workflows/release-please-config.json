@@ -1,0 +1,14 @@
+{
+    "packages": {
+        ".": {
+            "release-type": "simple",
+            "changelog-path": ".thunderstore/CHANGELOG.md",
+            "extra-files": [
+                {
+                    "type": "generic",
+                    "path": "Jumpscare.csproj"
+                }
+            ]
+        }
+    }
+}
