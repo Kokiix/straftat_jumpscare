@@ -24,5 +24,6 @@ static class JumpscareTimer
     static IEnumerator JumpscareOnDelay()
     {
         yield return new WaitForSeconds(_rng.Next(MaxSecondDelayForJumpscare + 1));
+        Debug.LogError("jumpscare time");
     }
 }

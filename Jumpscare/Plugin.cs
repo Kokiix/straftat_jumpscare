@@ -34,4 +34,12 @@ public class JumpscarePlugin : BaseUnityPlugin
         _harmony.UnpatchSelf();
         SceneManager.sceneLoaded -= JumpscareTimer.OnSceneLoad;
     }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            JumpscareVideoPlayer.Player.Play();
+        }
+    }
 }
