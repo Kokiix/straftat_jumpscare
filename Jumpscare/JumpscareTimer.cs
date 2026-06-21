@@ -12,6 +12,7 @@ static class JumpscareTimer
         if (scene.name == "MainMenu" && _timer != null)
         {
             JumpscarePlugin.Instance.StopCoroutine(_timer);
+            _timer = null;
         }
         else
         {
@@ -25,5 +26,8 @@ static class JumpscareTimer
     {
         yield return new WaitForSeconds(_rng.Next(MaxSecondDelayForJumpscare + 1));
         Debug.LogError("jumpscare time");
+
+        _timer = JumpscareOnDelay();
+        JumpscarePlugin.Instance.StartCoroutine(_timer);
     }
 }
