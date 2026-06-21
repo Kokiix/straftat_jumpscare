@@ -4,30 +4,30 @@ using UnityEngine.SceneManagement;
 
 static class JumpscareTimer
 {
-    static System.Random _rng = new System.Random();
-    static IEnumerator _timer;
+    //     static System.Random _rng = new System.Random();
+    //     static IEnumerator _timer;
 
     internal static void OnSceneLoad(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == "MainMenu" && _timer != null)
-        {
-            JumpscarePlugin.Instance.StopCoroutine(_timer);
-            _timer = null;
-        }
-        else if (mode == LoadSceneMode.Single)
-        {
-            _timer = JumpscareOnDelay();
-            JumpscarePlugin.Instance.StartCoroutine(_timer);
-        }
+        //         if (scene.name == "MainMenu" && _timer != null)
+        //         {
+        //             JumpscarePlugin.Instance.StopCoroutine(_timer);
+        //             _timer = null;
+        //         }
+        //         else // TODO: block scene from CLR
+        //         {
+        //             _timer = JumpscareOnDelay();
+        //             JumpscarePlugin.Instance.StartCoroutine(_timer);
+        //         }
     }
 
-    const int MaxSecondDelayForJumpscare = 10; // TODO: convert to ConfigEntry
-    static IEnumerator JumpscareOnDelay()
-    {
-        yield return new WaitForSeconds(_rng.Next(MaxSecondDelayForJumpscare + 1));
-        Debug.LogError("jumpscare time");
+    //     const int MaxSecondDelayForJumpscare = 10; // TODO: convert to ConfigEntry
+    //     static IEnumerator JumpscareOnDelay()
+    //     {
+    //         yield return new WaitForSeconds(_rng.Next(MaxSecondDelayForJumpscare + 1));
+    //         Debug.LogError("jumpscare time");
 
-        _timer = JumpscareOnDelay();
-        JumpscarePlugin.Instance.StartCoroutine(_timer);
-    }
+    //         _timer = JumpscareOnDelay();
+    //         JumpscarePlugin.Instance.StartCoroutine(_timer);
+    //     }
 }

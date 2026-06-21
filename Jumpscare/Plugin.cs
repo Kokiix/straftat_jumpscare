@@ -25,15 +25,15 @@ public class JumpscarePlugin : BaseUnityPlugin
         this.gameObject.hideFlags = HideFlags.HideAndDontSave;
         Instance = this;
 
-        JumpscareVideoPlayer.Init();
-
         _harmony.PatchAll();
+        SceneManager.sceneLoaded += JumpscareVideoPlayer.Init;
         SceneManager.sceneLoaded += JumpscareTimer.OnSceneLoad;
     }
 
     void OnDestroy()
     {
         _harmony.UnpatchSelf();
+        SceneManager.sceneLoaded -= JumpscareVideoPlayer.Init;
         SceneManager.sceneLoaded -= JumpscareTimer.OnSceneLoad;
     }
 
@@ -41,7 +41,10 @@ public class JumpscarePlugin : BaseUnityPlugin
     {
         if (Input.GetKeyDown(KeyCode.T))
         {
-            JumpscareVideoPlayer.Player.targetCamera = Camera.allCameras[0];
+            if (!JumpscareVideoPlayer.Player)
+            {
+                JumpscareVideoPlayer.Init();
+            }
             JumpscareVideoPlayer.Player.time = 0;
             JumpscareVideoPlayer.Player.Play();
         }
