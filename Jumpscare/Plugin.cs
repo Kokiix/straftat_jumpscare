@@ -45,7 +45,7 @@ public class JumpscarePlugin : BaseUnityPlugin
             {
                 JumpscareVideoPlayer.Init();
             }
-            JumpscareVideoPlayer.Player.time = 0;
+            JumpscareVideoPlayer.Player.Stop();
             JumpscareVideoPlayer.Player.Play();
         }
     }

@@ -8,6 +8,7 @@ using UnityEngine.Video;
 
 static class JumpscareVideoPlayer
 {
+    static RawImage Image;
     internal static VideoPlayer Player;
 
     internal static void Init(Scene scene, LoadSceneMode mode)
@@ -24,17 +25,27 @@ static class JumpscareVideoPlayer
         var UI = Object.FindObjectOfType<PauseManager>().transform;
 
         var jumpscareGO = new GameObject("Jumpscare");
-        jumpscareGO.transform.SetParent(UI);
+        jumpscareGO.transform.SetParent(UI, false);
 
-        var rendTexture = new RenderTexture();
+        // var rendTexture = new RenderTexture(1920, 1080, 16, RenderTextureFormat.ARGB32);
+        var rendTexture = new RenderTexture(1920, 1080, 0);
+        rendTexture.Create();
 
-        var img = jumpscareGO.AddComponent<RawImage>();
-        img.texture = rendTexture;
+        Image = jumpscareGO.AddComponent<RawImage>();
+        Image.texture = rendTexture;
+        var imgTransform = Image.GetComponent<RectTransform>();
+        imgTransform.anchorMin = Vector2.zero;
+        imgTransform.anchorMax = Vector2.one;
+        imgTransform.offsetMin = Vector2.zero;
+        imgTransform.offsetMax = Vector2.zero;
+        Image.enabled = false;
 
         Player = jumpscareGO.AddComponent<VideoPlayer>();
         Player.playOnAwake = false;
-        Player.url = Path.Combine(Paths.PluginPath, "jumpscare.mp4");
+        Player.url = Path.Combine(Path.Combine(Paths.PluginPath, "DEVELOPMENT-BUILD-Jumpscare Mod"), "jumpscare.mp4"); // TODO: use other path method
         Player.renderMode = VideoRenderMode.RenderTexture;
         Player.targetTexture = rendTexture;
+        Player.started += (VideoPlayer src) => Image.enabled = true;
+        Player.loopPointReached += (VideoPlayer src) => Image.enabled = false;
     }
 }
