@@ -14,7 +14,7 @@ static class JumpscareTimer
             JumpscarePlugin.Instance.StopCoroutine(_timer);
             _timer = null;
         }
-        else
+        else if (mode == LoadSceneMode.Single)
         {
             _timer = JumpscareOnDelay();
             JumpscarePlugin.Instance.StartCoroutine(_timer);
