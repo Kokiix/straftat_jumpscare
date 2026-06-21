@@ -41,14 +41,8 @@ public class JumpscarePlugin : BaseUnityPlugin
     {
         if (Input.GetKeyDown(KeyCode.T))
         {
-            if (!FirstPersonController.instance.playerCamera)
-            {
-                Debug.LogError("camera not there");
-                return;
-            }
-            JumpscareVideoPlayer.Player.targetCamera = FirstPersonController.instance.playerCamera;
-            Debug.LogError(JumpscareVideoPlayer.Player.targetCamera);
-            Debug.LogError(JumpscareVideoPlayer.Player.url);
+            JumpscareVideoPlayer.Player.targetCamera = Camera.allCameras[0];
+            JumpscareVideoPlayer.Player.time = 0;
             JumpscareVideoPlayer.Player.Play();
         }
     }

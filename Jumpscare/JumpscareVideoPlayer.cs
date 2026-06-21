@@ -15,7 +15,8 @@ static class JumpscareVideoPlayer
 
         Player = rootGO.AddComponent<VideoPlayer>();
         Player.playOnAwake = false;
-        Player.renderMode = VideoRenderMode.CameraNearPlane;
+        Player.renderMode = VideoRenderMode.CameraFarPlane;
         Player.url = Path.Combine(Paths.PluginPath, "jumpscare.mp4");
+        Debug.LogError("initialized");
     }
 }
