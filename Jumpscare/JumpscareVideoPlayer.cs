@@ -19,7 +19,7 @@ static class JumpscareVideoPlayer
         }
     }
 
-    // For debug
+    // Overload for debug
     internal static void Init()
     {
         var UI = Object.FindObjectOfType<PauseManager>().transform;

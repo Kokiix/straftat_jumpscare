@@ -25,7 +25,7 @@
         <DLLs>D:\SteamLibrary\steamapps\common\STRAFTAT\STRAFTAT_Data\Managed</DLLs>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="straftatmodding-MyceliumNetworking" Version="*" />
+        <PackageReference Include="koki-Custom_Levels_Reborn" Version="*" />
 
         <Reference Include="$(DLLs)\Assembly-CSharp.dll" Publicize="true" />
         <Reference Include="$(DLLs)\ComputerysModdingUtilities.dll" />

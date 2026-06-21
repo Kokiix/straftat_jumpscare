@@ -13,7 +13,7 @@ using UnityEngine.SceneManagement;
 
 [assembly: StraftatMod(isVanillaCompatible: true)]
 
-[BepInDependency(MyceliumNetworking.MyPluginInfo.PLUGIN_GUID)]
+[BepInDependency(CustomLevelsReborn.MyPluginInfo.PLUGIN_GUID, BepInDependency.DependencyFlags.SoftDependency)]
 [BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
 public class JumpscarePlugin : BaseUnityPlugin
 {
@@ -24,6 +24,9 @@ public class JumpscarePlugin : BaseUnityPlugin
     {
         this.gameObject.hideFlags = HideFlags.HideAndDontSave;
         Instance = this;
+
+        var CLRLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey(CustomLevelsReborn.MyPluginInfo.PLUGIN_GUID);
+        if (CLRLoaded) JumpscareTimer.SkipFirstScene = true;
 
         _harmony.PatchAll();
         SceneManager.sceneLoaded += JumpscareVideoPlayer.Init;
@@ -37,16 +40,17 @@ public class JumpscarePlugin : BaseUnityPlugin
         SceneManager.sceneLoaded -= JumpscareTimer.OnSceneLoad;
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            if (!JumpscareVideoPlayer.Player)
-            {
-                JumpscareVideoPlayer.Init();
-            }
-            JumpscareVideoPlayer.Player.Stop();
-            JumpscareVideoPlayer.Player.Play();
-        }
-    }
+    // Debug
+    // void Update()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.T))
+    //     {
+    //         if (!JumpscareVideoPlayer.Player)
+    //         {
+    //             JumpscareVideoPlayer.Init();
+    //         }
+    //         JumpscareVideoPlayer.Player.Stop();
+    //         JumpscareVideoPlayer.Player.Play();
+    //     }
+    // }
 }
