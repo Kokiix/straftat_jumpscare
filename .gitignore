@@ -3,4 +3,5 @@ obj
 issues.md
 *.user
 
-.thunderstore
+.thunderstore/build
+.thunderstore/dist
