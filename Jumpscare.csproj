@@ -6,7 +6,7 @@
 
         <BepInExPluginGuid>com.koki.jumpscare</BepInExPluginGuid>
         <BepInExPluginName>Jumpscare Mod</BepInExPluginName>
-        <BepInExPluginVersion>1.0.0</BepInExPluginVersion> <!-- x-release-please-version -->
+        <BepInExPluginVersion>0.0.0</BepInExPluginVersion> <!-- x-release-please-version -->
 
         <BepInExPluginDir>C:\Users\koki\AppData\Roaming\com.kesomannen.gale\straftat\profiles\Default\BepInEx\plugins</BepInExPluginDir>
         <Thunderstore>.\.thunderstore</Thunderstore>
@@ -25,15 +25,13 @@
         <DLLs>D:\SteamLibrary\steamapps\common\STRAFTAT\STRAFTAT_Data\Managed</DLLs>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="straftatmodding-MyceliumNetworking" Version="*" />
+        <PackageReference Include="koki-Custom_Levels_Reborn" Version="*" />
+        <PackageReference Include="kestrel-Mod_Menu" Version="*" />
 
         <Reference Include="$(DLLs)\Assembly-CSharp.dll" Publicize="true" />
         <Reference Include="$(DLLs)\ComputerysModdingUtilities.dll" />
 
-        <!-- <Reference Include="$(DLLs)\UnityEngine.UI.dll" />
-        <Reference Include="$(DLLs)\Unity.TextMeshPro.dll" />
-        <Reference Include="$(DLLs)\FishNet.Runtime.dll" />
-        <Reference Include="$(DLLs)\com.rlabrecque.steamworks.net.dll" /> -->
+        <Reference Include="$(DLLs)\UnityEngine.UI.dll" />
     </ItemGroup>
 
     <ItemGroup>
