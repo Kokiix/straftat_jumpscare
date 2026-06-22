@@ -52,8 +52,15 @@ public class JumpscarePlugin : BaseUnityPlugin
 
     void InitModMenu(OptionListContext c)
     {
-        c.AppendTextBox($"Change the video file for the jumpscare at:\n\n{Path.Combine(Path.GetDirectoryName(Info.Location), "jumpscare.mp4")}")
-        .GetComponent<LayoutElement>().preferredHeight = 256;
+        c.AppendButton(
+            "Jumpscare Video File Location",
+            "Click to copy",
+            () =>
+            {
+                GUIUtility.systemCopyBuffer = Path.GetDirectoryName(Info.Location);
+                PauseManager.Instance.WriteOfflineLog("Copied path to clipboard!");
+            });
+        c.AppendTextBox("(The file must be exactly named \"jumpscare\".mp4)");
     }
 
     // Debug
