@@ -28,11 +28,22 @@ public class JumpscarePlugin : BaseUnityPlugin
         var CLRLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey(CustomLevelsReborn.MyPluginInfo.PLUGIN_GUID);
         if (CLRLoaded) JumpscareTimer.SkipFirstScene = true;
 
+        InitConfig();
+
         _harmony.PatchAll();
         SceneManager.sceneLoaded += JumpscareVideoPlayer.Init;
         SceneManager.sceneLoaded += JumpscareTimer.OnSceneLoad;
     }
 
+    void InitConfig()
+    {
+        JumpscareTimer.MaxMinsBtwnJumpscares = Config.Bind("General", "Max Time Between Jumpscares (minutes)", 7.5,
+        "The jumpscare time is chosen between 0 min and this value. The timer only stops and resets when you exit to the main menu.");
+
+        JumpscareTimer.MaxMinsBtwnJumpscares.SettingChanged += JumpscareTimer.RestartTimer;
+    }
+
+    // Debug
     void OnDestroy()
     {
         _harmony.UnpatchSelf();

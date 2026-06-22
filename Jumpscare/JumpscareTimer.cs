@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using BepInEx.Configuration;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -18,7 +20,6 @@ static class JumpscareTimer
         }
         else
         {
-            Debug.LogError(mode);
             if (SkipFirstScene)
             {
                 SkipFirstScene = false;
@@ -30,15 +31,22 @@ static class JumpscareTimer
         }
     }
 
-    const int MaxSecondDelayForJumpscare = 10; // TODO: convert to ConfigEntry
+    internal static ConfigEntry<double> MaxMinsBtwnJumpscares;
     static IEnumerator JumpscareOnDelay()
     {
-        yield return new WaitForSeconds(_rng.Next(MaxSecondDelayForJumpscare + 1));
+        yield return new WaitForSeconds(_rng.Next((int)Math.Round(MaxMinsBtwnJumpscares.Value * 60)) + 1);
 
         Debug.LogError("jumpscare time");
         JumpscareVideoPlayer.Player.Stop();
         JumpscareVideoPlayer.Player.Play();
 
+        _timer = JumpscareOnDelay();
+        JumpscarePlugin.Instance.StartCoroutine(_timer);
+    }
+
+    internal static void RestartTimer(object sender, EventArgs e)
+    {
+        JumpscarePlugin.Instance.StopCoroutine(_timer);
         _timer = JumpscareOnDelay();
         JumpscarePlugin.Instance.StartCoroutine(_timer);
     }
