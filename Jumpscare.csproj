@@ -6,7 +6,7 @@
 
         <BepInExPluginGuid>com.koki.jumpscare</BepInExPluginGuid>
         <BepInExPluginName>Jumpscare Mod</BepInExPluginName>
-        <BepInExPluginVersion>1.0.0</BepInExPluginVersion> <!-- x-release-please-version -->
+        <BepInExPluginVersion>0.0.0</BepInExPluginVersion> <!-- x-release-please-version -->
 
         <BepInExPluginDir>C:\Users\koki\AppData\Roaming\com.kesomannen.gale\straftat\profiles\Default\BepInEx\plugins</BepInExPluginDir>
         <Thunderstore>.\.thunderstore</Thunderstore>

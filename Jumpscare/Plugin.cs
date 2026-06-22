@@ -38,7 +38,7 @@ public class JumpscarePlugin : BaseUnityPlugin
 
     void InitConfig()
     {
-        JumpscareTimer.MaxMinsBtwnJumpscares = Config.Bind("General", "Max Time Between Jumpscares (minutes)", 1f,
+        JumpscareTimer.MaxMinsBtwnJumpscares = Config.Bind("General", "Max Time Between Jumpscares (minutes)", 7.5f,
         "The jumpscare time is chosen between 0 min and this value. The timer only stops and resets when you exit to the main menu.");
 
         JumpscareTimer.MaxMinsBtwnJumpscares.SettingChanged += JumpscareTimer.RestartTimer;
@@ -52,7 +52,7 @@ public class JumpscarePlugin : BaseUnityPlugin
 
     void InitModMenu(OptionListContext c)
     {
-        c.AppendTextBox($"Change the video file for the jumpscare at {Path.Combine(Path.GetDirectoryName(Info.Location), "jumpscare.mp4")}")
+        c.AppendTextBox($"Change the video file for the jumpscare at:\n\n{Path.Combine(Path.GetDirectoryName(Info.Location), "jumpscare.mp4")}")
         .GetComponent<LayoutElement>().preferredHeight = 256;
     }
 
