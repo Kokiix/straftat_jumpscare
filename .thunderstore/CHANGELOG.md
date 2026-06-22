@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/Kokiix/straftat_jumpscare/compare/v1.0.0...v1.0.1) (2026-06-22)
+
+
+### Bug Fixes
+
+* replace CLR icon that was copied over ([2c93311](https://github.com/Kokiix/straftat_jumpscare/commit/2c93311b3aaf035b1f125ccb1c2bad1e63a6f7d8))
+
 ## 1.0.0 (2026-06-22)
 
 
