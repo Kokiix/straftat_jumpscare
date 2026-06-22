@@ -31,12 +31,11 @@ static class JumpscareTimer
         }
     }
 
-    internal static ConfigEntry<double> MaxMinsBtwnJumpscares;
+    internal static ConfigEntry<float> MaxMinsBtwnJumpscares;
     static IEnumerator JumpscareOnDelay()
     {
         yield return new WaitForSeconds(_rng.Next((int)Math.Round(MaxMinsBtwnJumpscares.Value * 60)) + 1);
 
-        Debug.LogError("jumpscare time");
         JumpscareVideoPlayer.Player.Stop();
         JumpscareVideoPlayer.Player.Play();
 

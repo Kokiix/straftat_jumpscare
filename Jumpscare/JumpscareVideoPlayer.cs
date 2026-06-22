@@ -27,7 +27,6 @@ static class JumpscareVideoPlayer
         var jumpscareGO = new GameObject("Jumpscare");
         jumpscareGO.transform.SetParent(UI, false);
 
-        // var rendTexture = new RenderTexture(1920, 1080, 16, RenderTextureFormat.ARGB32);
         var rendTexture = new RenderTexture(1920, 1080, 0);
         rendTexture.Create();
 
@@ -42,7 +41,7 @@ static class JumpscareVideoPlayer
 
         Player = jumpscareGO.AddComponent<VideoPlayer>();
         Player.playOnAwake = false;
-        Player.url = Path.Combine(Path.Combine(Paths.PluginPath, "DEVELOPMENT-BUILD-Jumpscare Mod"), "jumpscare.mp4"); // TODO: use other path method
+        Player.url = Path.Combine(Path.GetDirectoryName(JumpscarePlugin.Instance.Info.Location), "jumpscare.mp4");
         Player.renderMode = VideoRenderMode.RenderTexture;
         Player.targetTexture = rendTexture;
         Player.started += (VideoPlayer src) => Image.enabled = true;

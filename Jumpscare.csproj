@@ -26,6 +26,7 @@
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="koki-Custom_Levels_Reborn" Version="*" />
+        <PackageReference Include="kestrel-Mod_Menu" Version="*" />
 
         <Reference Include="$(DLLs)\Assembly-CSharp.dll" Publicize="true" />
         <Reference Include="$(DLLs)\ComputerysModdingUtilities.dll" />
